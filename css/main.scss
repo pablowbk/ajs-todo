@@ -24,6 +24,10 @@ main {
   margin-top: 3em;
 }
 
+form {
+  @include flexCenter(row)
+}
+
 ul {
   list-style: none;
   margin-top: 1em;
@@ -36,4 +40,19 @@ input, button {
 .done-true {
   text-decoration: line-through;
   color: #666666;
+}
+
+h3 {
+  margin-top: 1em;
+}
+
+.item {
+  margin-top: .5em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 10px 0;
+  display: flex;
+}
+
+.deleteCompleted {
+  margin-top: 1em;
 }

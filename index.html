@@ -18,7 +18,7 @@
       <button ng-click="addItem()" title="Add a new task">add</button>
     </form>
     <ul class="todos-list">
-      <li ng-repeat="todo in todos">
+      <li ng-repeat="todo in todos" class="item">
         <input type="checkbox" ng-model="todo.done" />
         <span class="done-{{todo.done}}">{{ todo.text }}</span>
       </li>
@@ -28,6 +28,7 @@
     <button ng-click="clearCompleted()" class="deleteCompleted" title="Delete tasks that were marked complete">
       Delete Completed Tasks
     </button>
+
     <h3>Tasks completed: {{ completed() }} of {{ todos.length }}</h3>
 
   </main>
