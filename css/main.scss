@@ -5,16 +5,11 @@
   font-family: sans-serif;
 }
 
-@mixin flexCenter {
+@mixin flexCenter($direction) {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-@mixin flexCenterCol {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: $direction;
 }
 
 body {
@@ -22,7 +17,7 @@ body {
 }
 
 header {
-  @include flexCenter();
+  @include flexCenter(row);
 }
 
 main {
@@ -36,4 +31,9 @@ ul {
 
 input, button {
   padding: .5em 1em;
+}
+
+.done-true {
+  text-decoration: line-through;
+  color: #666666;
 }

@@ -20,6 +20,10 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 main {
@@ -33,5 +37,10 @@ ul {
 
 input, button {
   padding: .5em 1em;
+}
+
+.done-true {
+  text-decoration: line-through;
+  color: #666666;
 }
 /*# sourceMappingURL=main.css.map */

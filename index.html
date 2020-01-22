@@ -9,28 +9,27 @@
 </head>
 <body ng-app="App">
   <header>
-    <h1>ToDo in Angular.JS</h1>
+    <h1>Get it done!</h1>
   </header>
 
   <main ng-controller="TodoController">
-    <h2>Remaining Tasks: {{ remaining() }}</h2>
+    <form>
+      <input type="text" ng-model="inputText" placeholder="What needs to be done?" />
+      <button ng-click="addItem()" title="Add a new task">add</button>
+    </form>
     <ul class="todos-list">
       <li ng-repeat="todo in todos">
         <input type="checkbox" ng-model="todo.done" />
         <span class="done-{{todo.done}}">{{ todo.text }}</span>
       </li>
     </ul>
-
-    <form>
-      <input type="text" ng-model="inputText" placeholder="Start typing..." />
-      <button ng-click="addItem()">add</button>
-    </form>
-
-    <button ng-click="clearCompleted()" class="deleteCompleted">
+    
+    
+    <button ng-click="clearCompleted()" class="deleteCompleted" title="Delete tasks that were marked complete">
       Delete Completed Tasks
     </button>
+    <h3>Tasks completed: {{ completed() }} of {{ todos.length }}</h3>
 
-    <!-- <button ng-click="{{clearCompleted()}}">Clear Completed</button> -->
   </main>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
   <script src="./js/app.js"></script>
