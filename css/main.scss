@@ -1,0 +1,39 @@
+*, *::before, *::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flexCenterCol {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  padding: 0 1em;
+}
+
+header {
+  @include flexCenter();
+}
+
+main {
+  margin-top: 3em;
+}
+
+ul {
+  list-style: none;
+  margin-top: 1em;
+}
+
+input, button {
+  padding: .5em 1em;
+}
