@@ -55,7 +55,7 @@ input, button {
   padding: .5em 1em;
 }
 
-.done-true {
+.done {
   text-decoration: line-through;
   color: #666666;
 }

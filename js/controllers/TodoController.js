@@ -32,11 +32,22 @@ app.controller("TodoController", function ($scope, $window) {
     return count;
   }
 
+  $scope.toggleDone = function() {
+    this.todo.done = !this.todo.done;
+    $window.localStorage.setItem('itemsList', angular.toJson($scope.todos))
+  }
+
   $scope.clearCompleted = function () {
     var oldTodos = $scope.todos;
     $scope.todos = [];
     angular.forEach(oldTodos, function (todo) {
       !todo.done && $scope.todos.push(todo);
     });
+    $window.localStorage.setItem('itemsList', angular.toJson($scope.todos))
   };
+
+  $scope.deleteAll = function() {
+    $scope.todos.length = 0;
+    $window.localStorage.removeItem('itemsList')
+  }
 });
