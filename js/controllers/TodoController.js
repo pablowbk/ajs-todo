@@ -50,4 +50,8 @@ app.controller("TodoController", function ($scope, $window) {
     $scope.todos.length = 0;
     $window.localStorage.removeItem('itemsList')
   }
+
+  $scope.updateItem = function() {
+    console.log("updating item")
+  }
 });
