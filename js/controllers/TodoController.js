@@ -11,7 +11,7 @@ app.controller("TodoController", function ($scope, $window) {
       //if user typed something , proceed
       $scope.todos.push({
         text: $scope.inputText,
-        done: false
+        done: false,
       });
       $window.localStorage.setItem('itemsList', angular.toJson($scope.todos))
       $scope.inputText = "";
@@ -51,7 +51,14 @@ app.controller("TodoController", function ($scope, $window) {
     $window.localStorage.removeItem('itemsList')
   }
 
+  $scope.deleteItem = function() {
+    $scope.todos.splice(this.$index, 1);
+    $window.localStorage.setItem('itemsList', angular.toJson($scope.todos))
+  }
+  
   $scope.updateItem = function() {
-    console.log("updating item")
+    console.log($scope, this)
+    // $window.localStorage.setItem('itemsList', angular.toJson($scope.todos))
+
   }
 });

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +7,6 @@
   <link rel="stylesheet" href="css/main.css">
   <title>ToDo App with AJS</title>
 </head>
-
 <body ng-app="App">
   <header>
     <h1>Get it done!</h1>
@@ -21,17 +19,16 @@
     </form>
     <ul class="todos-list">
       <li ng-repeat="todo in todos" class="item">
-        <input type="checkbox" ng-model="todo.done" ng-click="toggleDone()" />
-        <input 
-          class="{{todo.done ? 'done' : ''}}" 
-          type="text" 
-          ng-value="todo.text" 
-          ng-model="todo.text" 
-          ng-change="updateItem()"/>
+        <input type="checkbox" ng-model="todo.done" ng-click="toggleDone()"/>
+        <span class="{{todo.done ? 'done' : ''}}">{{ todo.text }}</span>
+        <input class="editInput" type="text" ng-model="todo.text"
+        ng-blur="updateItem()" />
+        <button ng-click="toggleEdit()">edit</button>
+        <button ng-click="deleteItem()">remove</button>
       </li>
     </ul>
-
-
+    
+    
     <button ng-click="clearCompleted()" class="deleteCompleted" title="Delete tasks that were marked complete">
       Delete Completed Tasks
     </button>
@@ -46,5 +43,4 @@
   <!-- Controllers -->
   <script src="./js/controllers/TodoController.js"></script>
 </body>
-
 </html>
