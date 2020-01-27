@@ -1,9 +1,12 @@
 app.controller("TodoController", function ($scope, $window) {
   $scope.todos = []
 
-  if ($window.localStorage.length >= 1) {
+  if ($window.localStorage['itemsList']) {
     $scope.todos = angular.fromJson($window.localStorage.getItem('itemsList'));
-  } else { console.log('No localStorage found')}
+  } else { 
+      // $scope.todos = []; 
+      console.log('No localStorage found')
+    }
 
   $scope.addItem = function () {
     // prevent empty entries from being accepted
