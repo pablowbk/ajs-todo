@@ -12,6 +12,7 @@ app.controller("TodoController", function ($scope, $window) {
       $scope.todos.push({
         text: $scope.inputText,
         done: false,
+        editing: false
       });
       $window.localStorage.setItem('itemsList', angular.toJson($scope.todos))
       $scope.inputText = "";
@@ -56,9 +57,13 @@ app.controller("TodoController", function ($scope, $window) {
     $window.localStorage.setItem('itemsList', angular.toJson($scope.todos))
   }
   
-  $scope.updateItem = function() {
-    console.log($scope, this)
+  $scope.updateItem = function($event) {
+    console.log($event)
     // $window.localStorage.setItem('itemsList', angular.toJson($scope.todos))
 
+  }
+
+  $scope.toggleEdit = function($event) {
+    $event.target.previousElementSibling.focus()
   }
 });

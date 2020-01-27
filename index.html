@@ -22,8 +22,8 @@
         <input type="checkbox" ng-model="todo.done" ng-click="toggleDone()"/>
         <span class="{{todo.done ? 'done' : ''}}">{{ todo.text }}</span>
         <input class="editInput" type="text" ng-model="todo.text"
-        ng-blur="updateItem()" />
-        <button ng-click="toggleEdit()">edit</button>
+        ng-blur="updateItem($event)" />
+        <button ng-click="toggleEdit($event)">edit</button>
         <button ng-click="deleteItem()">remove</button>
       </li>
     </ul>
