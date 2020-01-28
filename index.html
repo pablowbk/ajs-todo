@@ -21,8 +21,9 @@
       <li ng-repeat="todo in todos" class="item">
         <input type="checkbox" ng-model="todo.done" ng-click="toggleDone()"/>
         <span class="{{todo.done ? 'done' : ''}}">{{ todo.text }}</span>
-        <input class="editInput" type="text" ng-model="todo.text"
+        <input class="editInput" type="text" ng-value="todo.text"
         ng-blur="updateItem($event)" />
+        <button ng-click="saveEdit($event)">save</button>
         <button ng-click="toggleEdit($event)">edit</button>
         <button ng-click="deleteItem()">remove</button>
       </li>
