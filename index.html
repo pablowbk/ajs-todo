@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,10 +13,13 @@
 
   <title>ToDo App with AJS</title>
 </head>
+
 <body ng-app="App">
   <header>
-    <h1>Get it done!</h1>
+    <h1>watchNext</h1>
   </header>
+
+  <h3>Make your movie night wish list</h3>
 
   <main ng-controller="TodoController">
     <form class="newTaskForm">
@@ -34,8 +38,8 @@
         <button ng-click="deleteItem()" title="Remove task" ng-if="todo.editing === false">remove</button>
       </li>
     </ul>
-    
-    
+
+
     <button ng-click="clearCompleted()" class="deleteCompleted" title="Delete completed tasks">
       Delete Completed Tasks
     </button>
@@ -45,20 +49,17 @@
     <h3>Tasks completed: {{ completed() }} of {{ todos.length }}</h3>
 
   </main>
+
+  <footer>
+    <p>powered by <img src="https://angularjs.org/img/AngularJS-large.png" alt="angularjs logo"></p>
+  </footer>
+
+
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
   <script src="./js/app.js"></script>
   <!-- Controllers -->
   <script src="./js/controllers/TodoController.js"></script>
-  
-    <!-- BootStrap icons
-  
-    <p><span class="btn glyphicon glyphicon-plus" aria-hidden="true"></span></p>
-    <p><span class="btn glyphicon glyphicon-ok" aria-hidden="true"></span></p>
-    <p><span class="btn glyphicon glyphicon-remove" aria-hidden="true"></span></p>
-    <p><span class="btn glyphicon glyphicon-pencil" aria-hidden="true"></span></p>
-    <p><span class="btn glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></p> -->
 
-    <img class="logo" width="150" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
 </body>
-</html>
 
+</html>

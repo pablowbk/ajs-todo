@@ -76,6 +76,7 @@ app.controller("TodoController", function ($scope, $window) {
 
   $scope.toggleEdit = function (todo) {
     if (!todo.editing) {
+      todo.newText = "";
       todo.editing = true;
       todo.done = false;
       console.log("Edit!", todo)
@@ -88,11 +89,14 @@ app.controller("TodoController", function ($scope, $window) {
 
 
   $scope.saveEdit = function (todo) {
-    if (todo.newText) {
+    if (todo.newText !== "" && todo.newText !== todo.text) {
       todo.text = todo.newText;
       todo.editing = false;
       console.log("Saved", todo)
       $window.localStorage.setItem('itemsList', angular.toJson($scope.todos))
+    } else {
+      todo.editing = false;
+      console.log("no changes detected", todo)
     }
   }
 });

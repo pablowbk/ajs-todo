@@ -19,7 +19,8 @@ body {
 }
 
 header {
-  @include flexCenter(row);
+  // @include flexCenter(row);
+  margin-top: 2em;
 }
 
 main {
@@ -86,5 +87,19 @@ h3 {
   input {
     margin: 0 auto;
     text-align: center;
+  }
+}
+
+footer {
+  position: fixed;
+  bottom: .5em;
+  left: 1em;
+  right: 1em;
+  p {
+    @include flexCenter(row);
+    img {
+      margin-left: .25em;
+      width: 100px;
+    }
   }
 }
