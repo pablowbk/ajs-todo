@@ -39,19 +39,22 @@
       </li>
     </ul>
 
+    <div class="moreActions">
+      <button ng-click="clearCompleted()" class="deleteCompleted" title="Delete completed tasks">
+        Delete Completed Tasks
+      </button>
+  
+      <button ng-click="deleteAll()" title="Clear list">Delete All</button>
 
-    <button ng-click="clearCompleted()" class="deleteCompleted" title="Delete completed tasks">
-      Delete Completed Tasks
-    </button>
+    </div>
 
-    <button ng-click="deleteAll()" title="Clear list">Delete All</button>
-
-    <h3>Tasks completed: {{ completed() }} of {{ todos.length }}</h3>
+    <h3 class="tasksStatus">Tasks completed: {{ completed() }} of {{ todos.length }}</h3>
 
   </main>
 
   <footer>
-    <p>powered by <img src="https://angularjs.org/img/AngularJS-large.png" alt="angularjs logo"></p>
+    <p class="front">powered by <img src="https://angularjs.org/img/AngularJS-large.png" alt="angularjs logo"></p>
+    <p class="back">created by <a href="#">pablowbk</a></p>
   </footer>
 
 
