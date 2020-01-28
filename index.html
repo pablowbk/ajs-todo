@@ -2,9 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
   <link rel="stylesheet" href="css/main.css">
+
+  <!-- Bootstrap CSS -->
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+
   <title>ToDo App with AJS</title>
 </head>
 <body ng-app="App">
@@ -21,16 +26,17 @@
       <li ng-repeat="todo in todos" class="item">
         <input type="checkbox" ng-model="todo.done" ng-click="toggleDone()"/>
         <span class="{{todo.done ? 'done' : ''}}">{{ todo.text }}</span>
-        <input class="editInput" type="text" ng-value="todo.text"
-        ng-blur="updateItem($event)" />
-        <button ng-click="saveEdit($event)">save</button>
-        <button ng-click="toggleEdit($event)">edit</button>
-        <button ng-click="deleteItem()">remove</button>
+        <form ng-if="todo.editing === true">
+          <input class="editInput" type="text" ng-model="todo.newText" />
+          <button ng-click="saveEdit(todo)"  title="Save Changes">save</button>
+        </form>
+        <button ng-click="toggleEdit(todo)" title="Edit task">edit</button>
+        <button ng-click="deleteItem()" title="Remove task">remove</button>
       </li>
     </ul>
     
     
-    <button ng-click="clearCompleted()" class="deleteCompleted" title="Delete tasks that were marked complete">
+    <button ng-click="clearCompleted()" class="deleteCompleted" title="Delete completed tasks">
       Delete Completed Tasks
     </button>
 
@@ -43,5 +49,16 @@
   <script src="./js/app.js"></script>
   <!-- Controllers -->
   <script src="./js/controllers/TodoController.js"></script>
+  
+    <!-- BootStrap icons
+  
+    <p><span class="btn glyphicon glyphicon-plus" aria-hidden="true"></span></p>
+    <p><span class="btn glyphicon glyphicon-ok" aria-hidden="true"></span></p>
+    <p><span class="btn glyphicon glyphicon-remove" aria-hidden="true"></span></p>
+    <p><span class="btn glyphicon glyphicon-pencil" aria-hidden="true"></span></p>
+    <p><span class="btn glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></p> -->
+
+    <img class="logo" width="150" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
 </body>
 </html>
+

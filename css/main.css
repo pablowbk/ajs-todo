@@ -65,15 +65,23 @@ h3 {
 }
 
 .item {
-  margin-top: .5em;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  padding: 10px 0;
+  padding: 1em .5em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: all .1s;
+  transition: all .1s;
+}
+
+.item:hover {
+  background-color: #eeeeee;
 }
 
 .deleteCompleted {
