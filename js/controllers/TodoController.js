@@ -80,15 +80,19 @@ app.controller("TodoController", function ($scope, $window) {
       todo.done = false;
       console.log("Edit!", todo)
       // $event.target.previousElementSibling.focus()
+    } else {
+      todo.editing = false;
+      console.log("editing cancelled by user...")
     }
   }
 
 
   $scope.saveEdit = function (todo) {
-    todo.text = todo.newText;
-    todo.editing = false;
-    console.log("Saved", todo)
-    // this.todo.text = $event.target.previousElementSibling.value;
-    // $window.localStorage.setItem('itemsList', angular.toJson($scope.todos))
+    if (todo.newText) {
+      todo.text = todo.newText;
+      todo.editing = false;
+      console.log("Saved", todo)
+      $window.localStorage.setItem('itemsList', angular.toJson($scope.todos))
+    }
   }
 });

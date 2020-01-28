@@ -18,20 +18,20 @@
   </header>
 
   <main ng-controller="TodoController">
-    <form>
+    <form class="newTaskForm">
       <input type="text" ng-model="inputText" ng-required="required" placeholder="What needs to be done?" />
       <button ng-click="addItem()" title="Add a new task">add</button>
     </form>
     <ul class="todos-list">
       <li ng-repeat="todo in todos" class="item">
-        <input type="checkbox" ng-model="todo.done" ng-click="toggleDone()"/>
-        <span class="{{todo.done ? 'done' : ''}}">{{ todo.text }}</span>
-        <form ng-if="todo.editing === true">
+        <input type="checkbox" ng-model="todo.done" ng-click="toggleDone()" />
+        <span class="{{todo.done ? 'done' : ''}}" ng-if="todo.editing === false">{{ todo.text }}</span>
+        <form class="editTaskForm" ng-if="todo.editing === true" ng-submit="saveEdit(todo)">
           <input class="editInput" type="text" ng-model="todo.newText" />
-          <button ng-click="saveEdit(todo)"  title="Save Changes">save</button>
+          <button title="Save Changes">save</button>
         </form>
-        <button ng-click="toggleEdit(todo)" title="Edit task">edit</button>
-        <button ng-click="deleteItem()" title="Remove task">remove</button>
+        <button ng-click="toggleEdit(todo)" title="Edit task">{{todo.editing ? "cancel" : "edit" }}</button>
+        <button ng-click="deleteItem()" title="Remove task" ng-if="todo.editing === false">remove</button>
       </li>
     </ul>
     

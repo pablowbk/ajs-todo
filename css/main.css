@@ -1,4 +1,6 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   padding: 0;
   margin: 0;
   -webkit-box-sizing: border-box;
@@ -51,17 +53,22 @@ ul {
   margin-top: 1em;
 }
 
-input, button {
+input,
+button {
   padding: .5em 1em;
+}
+
+button, input[type=checkbox] {
+  cursor: pointer;
+}
+
+h3 {
+  margin-top: 1em;
 }
 
 .done {
   text-decoration: line-through;
   color: #666666;
-}
-
-h3 {
-  margin-top: 1em;
 }
 
 .item {
@@ -84,7 +91,31 @@ h3 {
   background-color: #eeeeee;
 }
 
+.item span {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: center;
+}
+
 .deleteCompleted {
   margin-top: 1em;
+}
+
+.editTaskForm {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.editTaskForm input {
+  margin: 0 auto;
+  text-align: center;
 }
 /*# sourceMappingURL=main.css.map */
