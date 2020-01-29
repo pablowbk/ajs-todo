@@ -1,4 +1,4 @@
-app.controller("TodoController", function ($scope, $window) {
+app.controller("TodoController", ['$scope', '$window', function ($scope, $window) {
   $scope.todos = [];
   $scope.inputText = "";
 
@@ -99,4 +99,4 @@ app.controller("TodoController", function ($scope, $window) {
       console.log("no changes detected", todo)
     }
   }
-});
+}]);

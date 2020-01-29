@@ -17,6 +17,5 @@
   },
   "homepage": "https://github.com/pablowbk/ajs-todo#readme",
   "dependencies": {
-    "angular-animate": "^1.7.9"
   }
 }
