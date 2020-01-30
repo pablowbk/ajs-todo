@@ -98,7 +98,7 @@ app.controller("TodoController", ['$scope', '$window', 'ngNotify', function ($sc
     if (todo.newText !== "" && todo.newText !== todo.text) {
       todo.text = todo.newText;
       todo.editing = false;
-      ngNotify.set('Movie title updated!')
+      ngNotify.set('Movie title updated!', 'success')
       $window.localStorage.setItem('itemsList', angular.toJson($scope.todos))
     } else {
       todo.editing = false;

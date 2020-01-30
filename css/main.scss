@@ -1,3 +1,5 @@
+@import 'custom';
+
 /* colors */
 :root {
   --primary: #bada55;
@@ -26,8 +28,14 @@ body {
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto auto 1fr auto;
-  grid-template-columns: minmax(320px, 700px);
   justify-content: center;
+}
+
+@media screen and (min-width: 700px) {
+  body {
+    grid-template-columns: minmax(600px, 900px);
+    margin: 0 2em;
+  }
 }
 
 header {
@@ -126,6 +134,7 @@ h3 {
 
 
 .tasksStatus {
+  margin-top:1em;
 }
 
 footer {

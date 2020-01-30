@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
-  <link rel="stylesheet" href="css/main.css">
   
   <!-- Bootstrap CDN -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -16,7 +15,8 @@
   <!-- ngNotify CDN -->
   <script src="https://cdn.jsdelivr.net/angular.ng-notify/0.8.0/ng-notify.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/angular.ng-notify/0.8.0/ng-notify.min.css">
-
+  
+  <link rel="stylesheet" href="css/main.css">
 
   <title>ToDo App with AJS</title>
 </head>
@@ -31,7 +31,7 @@
   <main ng-controller="TodoController">
     <form class="newTaskForm">
       <input type="text" ng-model="inputText" ng-required="required" placeholder="Type a movie title..." />
-      <button class="btn" ng-click="addItem()" title="Add a new task">add</button>
+      <button class="btn btn-outline-primary" ng-click="addItem()" title="Add a new task">add</button>
     </form>
     <ul class="todos-list">
       <li ng-repeat="todo in todos" class="item">
@@ -39,19 +39,19 @@
         <span class="{{todo.done ? 'done' : ''}}" ng-if="todo.editing === false">{{ todo.text }}</span>
         <form class="editTaskForm" ng-if="todo.editing === true" ng-submit="saveEdit(todo)">
           <input class="editInput" type="text" ng-model="todo.newText" />
-          <button title="Save Changes">save</button>
+          <button class="btn btn-outline-secondary" title="Save Changes">save</button>
         </form>
-        <button ng-click="toggleEdit(todo)" title="Edit task">{{todo.editing ? "cancel" : "edit" }}</button>
-        <button ng-click="deleteItem()" title="Remove task" ng-if="todo.editing === false">remove</button>
+        <button class="btn btn-outline-info" ng-click="toggleEdit(todo)" title="Edit task">{{todo.editing ? "cancel" : "edit" }}</button>
+        <button class="btn btn-outline-danger" ng-click="deleteItem()" title="Remove task" ng-if="todo.editing === false">remove</button>
       </li>
     </ul>
 
     <div class="moreActions">
-      <button ng-click="clearCompleted()" class="deleteCompleted" title="Delete completed tasks">
+      <button class="btn btn-link" ng-click="clearCompleted()" class="deleteCompleted" title="Delete completed tasks">
         Delete Completed Tasks
       </button>
   
-      <button ng-click="deleteAll()" title="Clear list">Delete All</button>
+      <button class="btn btn-link" ng-click="deleteAll()" title="Clear list">Delete All</button>
 
     </div>
     <h3 ng-if="todos.length === 0" class="tasksStatus">No movies added yet...</h3>
