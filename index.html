@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="css/main.css">
   
   <!-- Bootstrap CDN -->
-  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <!-- AngularJS CDN -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular-animate.js"></script>
@@ -31,7 +31,7 @@
   <main ng-controller="TodoController">
     <form class="newTaskForm">
       <input type="text" ng-model="inputText" ng-required="required" placeholder="Type a movie title..." />
-      <button ng-click="addItem()" title="Add a new task">add</button>
+      <button class="btn" ng-click="addItem()" title="Add a new task">add</button>
     </form>
     <ul class="todos-list">
       <li ng-repeat="todo in todos" class="item">

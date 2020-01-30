@@ -26,6 +26,8 @@ body {
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto auto 1fr auto;
+  grid-template-columns: minmax(320px, 700px);
+  justify-content: center;
 }
 
 header {
@@ -103,6 +105,18 @@ h3 {
     flex: 1;
     text-align: center;
   }
+  .editTaskForm {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+  
+    input {
+      margin: 0 auto;
+      text-align: center;
+      background: none;
+      border: none;
+    }
+  }
 
 }
 
@@ -110,16 +124,6 @@ h3 {
   margin-top: 1em;
 }
 
-.editTaskForm {
-  flex: 1;
-  display: flex;
-  justify-content: space-between;
-
-  input {
-    margin: 0 auto;
-    text-align: center;
-  }
-}
 
 .tasksStatus {
 }

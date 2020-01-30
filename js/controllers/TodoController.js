@@ -2,13 +2,17 @@ app.controller("TodoController", ['$scope', '$window', 'ngNotify', function ($sc
   $scope.todos = [];
   $scope.inputText = "";
 
+  ngNotify.config({
+    duration: 2000
+  })
+
   if ($window.localStorage['itemsList']) {
     $scope.todos = angular.fromJson($window.localStorage.getItem('itemsList'));
-    console.log('Fetched Items from localStorage', $scope.todos)
+    ngNotify.set('Existing list found and loaded!', 'success')
+
   } else {
     // $scope.todos = []; 
-    console.log('No localStorage found');
-    ngNotify.set('No previous list items found. Starting a new one!')
+    ngNotify.set('No previous list items found. Starting a new one!', 'grimace')
   }
 
   $scope.addItem = function () {
@@ -22,6 +26,8 @@ app.controller("TodoController", ['$scope', '$window', 'ngNotify', function ($sc
       });
       $window.localStorage.setItem('itemsList', angular.toJson($scope.todos))
       $scope.inputText = "";
+    } else {
+      ngNotify.set('Type a movie title first!')
     }
   };
 
@@ -43,7 +49,7 @@ app.controller("TodoController", ['$scope', '$window', 'ngNotify', function ($sc
     this.todo.done = !this.todo.done;
     $window.localStorage.setItem('itemsList', angular.toJson($scope.todos))
     if ($scope.completed() === $scope.todos.length) {
-      ngNotify.set('All movies watched!')
+      ngNotify.set('All movies watched!', 'success');
     }
   }
 
@@ -57,8 +63,7 @@ app.controller("TodoController", ['$scope', '$window', 'ngNotify', function ($sc
       $window.localStorage.setItem('itemsList', angular.toJson($scope.todos));
 
     } else {
-      console.log("No items listed yet...");
-      ngNotify.set('Nothing to be cleared. Check your selection.');
+      ngNotify.set('Nothing to be cleared. Check your selection.', 'warn');
     }
 
   };
@@ -69,24 +74,21 @@ app.controller("TodoController", ['$scope', '$window', 'ngNotify', function ($sc
       $window.localStorage.removeItem('itemsList');
       ngNotify.set('List cleared!');
     } else {
-      ngNotify.set('Oops, no items listed yet!');
+      ngNotify.set('Oops, no movies listed yet!', 'warn');
     }
   }
 
   $scope.deleteItem = function () {
     $scope.todos.splice(this.$index, 1);
-    console.log($scope.todos) 
   }
 
   $scope.toggleEdit = function (todo) {
     if (!todo.editing) {
-      todo.newText = "";
+      todo.newText = todo.text;
       todo.editing = true;
       todo.done = false;
-      console.log("Edit!", todo)
     } else {
       todo.editing = false;
-      console.log("editing cancelled by user...")
       ngNotify.set('editing cancelled by user')
     }
   }
@@ -96,12 +98,10 @@ app.controller("TodoController", ['$scope', '$window', 'ngNotify', function ($sc
     if (todo.newText !== "" && todo.newText !== todo.text) {
       todo.text = todo.newText;
       todo.editing = false;
-      console.log("Saved", todo)
       ngNotify.set('Movie title updated!')
       $window.localStorage.setItem('itemsList', angular.toJson($scope.todos))
     } else {
       todo.editing = false;
-      console.log("no changes detected", todo)
       ngNotify.set('Nothing changed...')
     }
   }
