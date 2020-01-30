@@ -8,11 +8,15 @@
   
   <link rel="stylesheet" href="css/main.css">
   
-  <!-- Bootstrap CSS -->
+  <!-- Bootstrap CDN -->
   <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
   <!-- AngularJS CDN -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular-animate.js"></script>
+  <!-- ngNotify CDN -->
+  <script src="https://cdn.jsdelivr.net/angular.ng-notify/0.8.0/ng-notify.min.js"></script>
+  <link rel="stylesheet" href="http://cdn.jsdelivr.net/angular.ng-notify/0.8.0/ng-notify.min.css">
+
 
   <title>ToDo App with AJS</title>
 </head>
@@ -22,11 +26,11 @@
     <h1>watchNext</h1>
   </header>
 
-  <h3>Make your movie night wish list</h3>
+  <h3>Make your movies-night wish list!</h3>
 
   <main ng-controller="TodoController">
     <form class="newTaskForm">
-      <input type="text" ng-model="inputText" ng-required="required" placeholder="What needs to be done?" />
+      <input type="text" ng-model="inputText" ng-required="required" placeholder="Type a movie title..." />
       <button ng-click="addItem()" title="Add a new task">add</button>
     </form>
     <ul class="todos-list">
@@ -50,8 +54,9 @@
       <button ng-click="deleteAll()" title="Clear list">Delete All</button>
 
     </div>
-
-    <h3 class="tasksStatus">Tasks completed: {{ completed() }} of {{ todos.length }}</h3>
+    <h3 ng-if="todos.length === 0" class="tasksStatus">No movies added yet...</h3>
+    <h3 ng-if="completed() !== todos.length" class="tasksStatus">Movies watched: {{ completed() }} of {{ todos.length }}</h3>
+    <h3 ng-if="todos.length > 0 && completed() === todos.length" class="taksCompletedStatus">You're all out of popcorn!</h3>
 
   </main>
 
