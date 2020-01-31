@@ -27,7 +27,7 @@ app.controller("TodoController", ['$scope', '$window', 'ngNotify', function ($sc
       $window.localStorage.setItem('itemsList', angular.toJson($scope.todos))
       $scope.inputText = "";
     } else {
-      ngNotify.set('Type a movie title first!')
+      ngNotify.set('Type a movie title first!', 'warn')
     }
   };
 
