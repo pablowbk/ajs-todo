@@ -78,6 +78,24 @@ h3 {
       border-bottom-color: #f28f04;
     }
   }
+
+  .newTaskForm__addBtn {
+    border: none;
+    height: 1.5em;
+    width: 1.5em;
+    background: none;
+    font-size: 1.5em;
+    padding: .5em;
+    transition: all .1s ease-in-out;
+  
+    &:hover, &:focus {
+      transform: scale(1.2);
+    }
+    
+    svg {
+      transform: translate(-25%, -25%);
+    }
+  }
 }
 
 .done {
@@ -99,7 +117,18 @@ h3 {
   transition: all .1s;
 
   &:hover {
-    background-color: rgba(253, 191, 104, 0.3);
+    background-color: #e6e6e6;
+  }
+
+  button {
+    border: none;
+    background: none;
+    font-size: 1.5em;
+    transition: all .2s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 
   span {
@@ -130,28 +159,159 @@ h3 {
   
   }
 
+}
+
+.item__checkbox__container {
+  display: block;
+  cursor: pointer;
+  position: relative;
+
+  .item__checkbox {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  .item__checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(-50%);
+    height: 1.6em;
+    width: 1.6em;
+    border: 2px solid #666;
+    border-bottom-width: 2px;
+    border-right-width: 2px;
+    border-bottom-color: #999;
+    border-right-color: #999;
+    background-color: #eee;
+
+  }
+
+  .item__checkmark:after {
+    content: "";
+    position: absolute;
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
+
+.item__checkbox:checked ~ .item__checkmark {
+  border: none;
+}
+
+.item__checkbox:checked ~ .item__checkmark:after {
+  content: '\1F37F';
+  transform: rotate(15deg) scale(.8, 1) translate(-60%, -25%);
+  transition: transform .1s;
+  opacity: 1;
+  font-size: 2.5em;
+
+  &:hover {
+    transform: rotate(15deg) scale(1.1) translate(-50%, -25%);
+  }
+}
+
+.item__removeBtn {
+  margin-left: 1em;
+  color: hsl(0, 50%, 30%);
+  transition: color .2s;
+
+  &:hover {
+    color: hsl(0, 100%, 50%);
+  }
+}
+
+.item__editTaskForm__saveBtn {
+  margin-right: 1em;
+  color: hsl(155, 50%, 30%);
+  transition: color .2s;
+
+  &:hover {
+    color: hsl(155, 90%, 33%);
+  }
+}
 
 
+.listModifiers {
+  margin-top: 2em;
+  
+  .svg-inline--fa {
+    margin-right: .5em;
+  }
+
+  button {
+    border:none;
+    background: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+  }
 }
 
 .orderItems {
-  margin-top: 1em;
+  
+  button {
+    color: hsl(239, 50%, 40%);
+    transition: color .2s;
+    
+    &:hover {
+      color: hsl(239, 100%, 50%);
+    }
 
+    &:hover svg {
+      transform: scale(1.2);
+    }
+
+    svg {
+      transition: transform .1s;
+    }
+  }
+  
+  
 }
 
 .moreActions {
-  margin-top: 1em;
+  margin-top: 1em;  
+  
+  button {
+    color: hsl(0, 50%, 30%);
+    transition: color .2s;
+
+    &:hover {
+      color: hsl(0, 100%, 50%);
+    }
+
+    &:hover svg {
+      transform: scale(1.2);
+    }
+
+
+    svg {
+      transition: transform .1s;
+    }
+  }
 }
+
+.moreActions__deleteAllBtn {
+  margin-left: 1em;
+}
+
 
 @media screen and (min-width: 600px) {
   .listModifiers {
     display: flex;
     justify-content: space-between;
   }
+  .moreActions {
+    margin-top: 0;  
+  }  
 }
 
 .tasksStatus {
-  margin-top:1em;
+  margin-top:2em;
+  text-align: center;
 }
 
 footer {

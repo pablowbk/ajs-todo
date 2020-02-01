@@ -87,6 +87,27 @@ h3 {
   border-bottom-color: #f28f04;
 }
 
+.newTaskForm .newTaskForm__addBtn {
+  border: none;
+  height: 1.5em;
+  width: 1.5em;
+  background: none;
+  font-size: 1.5em;
+  padding: .5em;
+  -webkit-transition: all .1s ease-in-out;
+  transition: all .1s ease-in-out;
+}
+
+.newTaskForm .newTaskForm__addBtn:hover, .newTaskForm .newTaskForm__addBtn:focus {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+.newTaskForm .newTaskForm__addBtn svg {
+  -webkit-transform: translate(-25%, -25%);
+          transform: translate(-25%, -25%);
+}
+
 .done {
   text-decoration: line-through;
   color: #666666;
@@ -113,7 +134,20 @@ h3 {
 }
 
 .item:hover {
-  background-color: rgba(253, 191, 104, 0.3);
+  background-color: #e6e6e6;
+}
+
+.item button {
+  border: none;
+  background: none;
+  font-size: 1.5em;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+.item button:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 .item span {
@@ -153,12 +187,152 @@ h3 {
   margin-right: .5em;
 }
 
-.orderItems {
-  margin-top: 1em;
+.item__checkbox__container {
+  display: block;
+  cursor: pointer;
+  position: relative;
+}
+
+.item__checkbox__container .item__checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.item__checkbox__container .item__checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  height: 1.6em;
+  width: 1.6em;
+  border: 2px solid #666;
+  border-bottom-width: 2px;
+  border-right-width: 2px;
+  border-bottom-color: #999;
+  border-right-color: #999;
+  background-color: #eee;
+}
+
+.item__checkbox__container .item__checkmark:after {
+  content: "";
+  position: absolute;
+  opacity: 0;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+}
+
+.item__checkbox:checked ~ .item__checkmark {
+  border: none;
+}
+
+.item__checkbox:checked ~ .item__checkmark:after {
+  content: '\1F37F';
+  -webkit-transform: rotate(15deg) scale(0.8, 1) translate(-60%, -25%);
+          transform: rotate(15deg) scale(0.8, 1) translate(-60%, -25%);
+  -webkit-transition: -webkit-transform .1s;
+  transition: -webkit-transform .1s;
+  transition: transform .1s;
+  transition: transform .1s, -webkit-transform .1s;
+  opacity: 1;
+  font-size: 2.5em;
+}
+
+.item__checkbox:checked ~ .item__checkmark:after:hover {
+  -webkit-transform: rotate(15deg) scale(1.1) translate(-50%, -25%);
+          transform: rotate(15deg) scale(1.1) translate(-50%, -25%);
+}
+
+.item__removeBtn {
+  margin-left: 1em;
+  color: #732626;
+  -webkit-transition: color .2s;
+  transition: color .2s;
+}
+
+.item__removeBtn:hover {
+  color: red;
+}
+
+.item__editTaskForm__saveBtn {
+  margin-right: 1em;
+  color: #267353;
+  -webkit-transition: color .2s;
+  transition: color .2s;
+}
+
+.item__editTaskForm__saveBtn:hover {
+  color: #08a061;
+}
+
+.listModifiers {
+  margin-top: 2em;
+}
+
+.listModifiers .svg-inline--fa {
+  margin-right: .5em;
+}
+
+.listModifiers button {
+  border: none;
+  background: none;
+  border-radius: 5px;
+  font-size: 1.1em;
+}
+
+.orderItems button {
+  color: #333599;
+  -webkit-transition: color .2s;
+  transition: color .2s;
+}
+
+.orderItems button:hover {
+  color: #0004ff;
+}
+
+.orderItems button:hover svg {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+.orderItems button svg {
+  -webkit-transition: -webkit-transform .1s;
+  transition: -webkit-transform .1s;
+  transition: transform .1s;
+  transition: transform .1s, -webkit-transform .1s;
 }
 
 .moreActions {
   margin-top: 1em;
+}
+
+.moreActions button {
+  color: #732626;
+  -webkit-transition: color .2s;
+  transition: color .2s;
+}
+
+.moreActions button:hover {
+  color: red;
+}
+
+.moreActions button:hover svg {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+.moreActions button svg {
+  -webkit-transition: -webkit-transform .1s;
+  transition: -webkit-transform .1s;
+  transition: transform .1s;
+  transition: transform .1s, -webkit-transform .1s;
+}
+
+.moreActions__deleteAllBtn {
+  margin-left: 1em;
 }
 
 @media screen and (min-width: 600px) {
@@ -170,10 +344,14 @@ h3 {
         -ms-flex-pack: justify;
             justify-content: space-between;
   }
+  .moreActions {
+    margin-top: 0;
+  }
 }
 
 .tasksStatus {
-  margin-top: 1em;
+  margin-top: 2em;
+  text-align: center;
 }
 
 footer {

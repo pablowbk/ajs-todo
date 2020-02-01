@@ -16,7 +16,8 @@
   <script src="https://cdn.jsdelivr.net/angular.ng-notify/0.8.0/ng-notify.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/angular.ng-notify/0.8.0/ng-notify.min.css">
   <!-- FontAwesome CDN -->
-  <script defer src="https://use.fontawesome.com/releases/v5.12.0/js/all.js" integrity="sha384-S+e0w/GqyDFzOU88KBBRbedIB4IMF55OzWmROqS6nlDcXlEaV8PcFi4DHZYfDk4Y" crossorigin="anonymous"></script>
+  <!-- <script defer src="https://use.fontawesome.com/releases/v5.12.0/js/all.js" integrity="sha384-S+e0w/GqyDFzOU88KBBRbedIB4IMF55OzWmROqS6nlDcXlEaV8PcFi4DHZYfDk4Y" crossorigin="anonymous"></script> -->
+  <script src="https://kit.fontawesome.com/cd294b5c2b.js" crossorigin="anonymous"></script>
 
   <link rel="stylesheet" href="css/main.css">
 
@@ -33,32 +34,37 @@
   <main ng-controller="TodoController">
     <form class="newTaskForm">
       <input class="newTaskForm__input" type="text" ng-model="inputText" ng-required="required" placeholder="Type a movie title..." />
-      <button class="newTaskForm__addBtn" ng-click="addItem()" title="Add a new task">add</button>
+      <button class="newTaskForm__addBtn" ng-click="addItem()" title="Add a new task"><i class="fas fa-plus"></i></button>
     </form>
     <ul class="todos-list">
       <li ng-repeat="todo in todos | orderBy:groupDone" class="item">
-        <input class="item__checkbox" type="checkbox" ng-model="todo.done" ng-click="toggleDone()" />
+        <label class="item__checkbox__container" ng-if="todo.editing === false">
+          <input class="item__checkbox" type="checkbox" ng-model="todo.done" ng-click="toggleDone()" />
+          <span class="item__checkmark"></span>
+        </label>
         <span class="{{todo.done ? 'done' : ''}}" ng-if="todo.editing === false">{{ todo.text }}</span>
         <form class="item__editTaskForm" ng-if="todo.editing === true" ng-submit="saveEdit(todo)">
           <input class="item__editTaskForm__editInput" id="editInput" type="text" ng-model="todo.newText" ng-init="setFocus()"/>
-          <button class="item__editTaskForm__saveBtn" title="Save Changes">save</button>
+          <button class="item__editTaskForm__saveBtn" title="Save Changes"><i class="fas fa-save"></i></button>
         </form>
-        <button class="item__editBtn" ng-click="toggleEdit(todo)" title="Edit task"><i class="fas fa-pen-square"></i></button>
-        <button class="item__removeBtn" ng-click="deleteItem()" title="Remove task" ng-if="todo.editing === false">remove</button>
+        <button class="item__editBtn" ng-click="toggleEdit(todo)" title="Edit Title">
+          <i class="{{ todo.editing ? 'fas fa-times' : 'fas fa-pen' }}"></i>
+        </button>
+        <button class="item__removeBtn" ng-click="deleteItem()" title="Remove Movie" ng-if="todo.editing === false"><i class="fas fa-trash"></i></button>
       </li>
     </ul>
 
     <div class="listModifiers">
       <div class="orderItems">
-        <button ng-click="orderByDone('done')">Group Completed</button>
+        <button ng-click="orderByDone('done')" title="Send already watched to bottom of list"><i class="fas fa-layer-group"></i>Group Completed</button>
       </div>
   
       <div class="moreActions">
         <button class="moreActions__deleteCompletedBtn" ng-click="clearCompleted()" title="Delete completed tasks">
-          Delete Completed Tasks
+          <i class="fas fa-trash-alt"></i>Completed Tasks
         </button>
     
-        <button class="moreActions__deleteAllBtn" ng-click="deleteAll()" title="Clear list">Delete All</button>
+        <button class="moreActions__deleteAllBtn" ng-click="deleteAll()" title="Clear list"><i class="fas fa-trash-alt"></i>All</button>
       </div>
     </div>
 
