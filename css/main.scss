@@ -29,9 +29,9 @@ body {
   justify-content: center;
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 600px) {
   body {
-    grid-template-columns: minmax(600px, 900px);
+    grid-template-columns: minmax(500px, 700px);
     margin: 0 2em;
   }
 }
@@ -65,7 +65,7 @@ h3 {
 
 .newTaskForm {
   
-  input {
+  .newTaskForm__input {
     padding: .5em 1em;
     font-size: 1em;
     margin-right: .5em;
@@ -106,16 +106,22 @@ h3 {
     flex: 1;
     text-align: center;
   }
-  .editTaskForm {
+
+  .item__editTaskForm {
     flex: 1;
     display: flex;
     justify-content: space-between;
   
-    input {
+    .item__editTaskForm__editInput {
       margin: 0 auto;
       text-align: center;
       background: none;
       border: none;
+
+      &:focus {
+        text-decoration-color: #bada55;
+        text-decoration: wavy;
+      }
     }
 
     .saveBtn {
@@ -128,10 +134,21 @@ h3 {
 
 }
 
+.orderItems {
+  margin-top: 1em;
+
+}
+
 .moreActions {
   margin-top: 1em;
 }
 
+@media screen and (min-width: 600px) {
+  .listModifiers {
+    display: flex;
+    justify-content: space-between;
+  }
+}
 
 .tasksStatus {
   margin-top:1em;

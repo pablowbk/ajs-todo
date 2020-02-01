@@ -32,15 +32,15 @@
 
   <main ng-controller="TodoController">
     <form class="newTaskForm">
-      <input class="newTaskform__input" type="text" ng-model="inputText" ng-required="required" placeholder="Type a movie title..." />
+      <input class="newTaskForm__input" type="text" ng-model="inputText" ng-required="required" placeholder="Type a movie title..." />
       <button class="newTaskForm__addBtn" ng-click="addItem()" title="Add a new task">add</button>
     </form>
     <ul class="todos-list">
-      <li ng-repeat="todo in todos" class="item">
+      <li ng-repeat="todo in todos | orderBy:groupDone" class="item">
         <input class="item__checkbox" type="checkbox" ng-model="todo.done" ng-click="toggleDone()" />
-        <span class="item__{{todo.done ? 'done' : ''}}" ng-if="todo.editing === false">{{ todo.text }}</span>
+        <span class="{{todo.done ? 'done' : ''}}" ng-if="todo.editing === false">{{ todo.text }}</span>
         <form class="item__editTaskForm" ng-if="todo.editing === true" ng-submit="saveEdit(todo)">
-          <input class="item__editTaskForm__editInput" type="text" ng-model="todo.newText" />
+          <input class="item__editTaskForm__editInput" id="editInput" type="text" ng-model="todo.newText" ng-init="setFocus()"/>
           <button class="item__editTaskForm__saveBtn" title="Save Changes">save</button>
         </form>
         <button class="item__editBtn" ng-click="toggleEdit(todo)" title="Edit task"><i class="fas fa-pen-square"></i></button>
@@ -48,14 +48,20 @@
       </li>
     </ul>
 
-    <div class="moreActions">
-      <button class="moreActions__deleteCompletedBtn" ng-click="clearCompleted()" title="Delete completed tasks">
-        Delete Completed Tasks
-      </button>
+    <div class="listModifiers">
+      <div class="orderItems">
+        <button ng-click="orderByDone('done')">Group Completed</button>
+      </div>
   
-      <button class="moreActions__deleteAllBtn" ng-click="deleteAll()" title="Clear list">Delete All</button>
-
+      <div class="moreActions">
+        <button class="moreActions__deleteCompletedBtn" ng-click="clearCompleted()" title="Delete completed tasks">
+          Delete Completed Tasks
+        </button>
+    
+        <button class="moreActions__deleteAllBtn" ng-click="deleteAll()" title="Clear list">Delete All</button>
+      </div>
     </div>
+
     <div class="tasksStatus">
       <h3 ng-if="todos.length === 0">No movies added yet...</h3>
       <h3 ng-if="completed() !== todos.length">Movies watched: {{ completed() }} of {{ todos.length }}</h3>

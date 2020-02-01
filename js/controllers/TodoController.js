@@ -93,6 +93,10 @@ app.controller("TodoController", ['$scope', '$window', 'ngNotify', function ($sc
     }
   }
 
+  $scope.setFocus = function() {
+    var editInput = $window.document.getElementById('editInput');
+    editInput.focus();
+  }
 
   $scope.saveEdit = function (todo) {
     if (todo.newText !== "" && todo.newText !== todo.text) {
@@ -106,5 +110,8 @@ app.controller("TodoController", ['$scope', '$window', 'ngNotify', function ($sc
     }
   }
 
+  $scope.orderByDone = function(orderByProp) {
+    $scope.groupDone = orderByProp;
+  }
   
 }]);
