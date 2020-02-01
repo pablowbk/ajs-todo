@@ -150,7 +150,7 @@ h3 {
           transform: scale(1.2);
 }
 
-.item span {
+.item .item__taskName {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -174,13 +174,11 @@ h3 {
   text-align: center;
   background: none;
   border: none;
+  padding: .5em 0;
 }
 
 .item .item__editTaskForm .item__editTaskForm__editInput:focus {
-  -webkit-text-decoration-color: #bada55;
-          text-decoration-color: #bada55;
-  -webkit-text-decoration: wavy;
-          text-decoration: wavy;
+  background: rgba(157, 226, 199, 0.2);
 }
 
 .item .item__editTaskForm .saveBtn {
@@ -191,6 +189,7 @@ h3 {
   display: block;
   cursor: pointer;
   position: relative;
+  margin-right: 30px;
 }
 
 .item__checkbox__container .item__checkbox {
@@ -215,6 +214,7 @@ h3 {
   border-bottom-color: #999;
   border-right-color: #999;
   background-color: #eee;
+  text-align: center;
 }
 
 .item__checkbox__container .item__checkmark:after {
@@ -231,8 +231,8 @@ h3 {
 
 .item__checkbox:checked ~ .item__checkmark:after {
   content: '\1F37F';
-  -webkit-transform: rotate(15deg) scale(0.8, 1) translate(-60%, -25%);
-          transform: rotate(15deg) scale(0.8, 1) translate(-60%, -25%);
+  -webkit-transform: rotate(15deg) scale(0.8, 1) translate(-70%, -20%);
+          transform: rotate(15deg) scale(0.8, 1) translate(-70%, -20%);
   -webkit-transition: -webkit-transform .1s;
   transition: -webkit-transform .1s;
   transition: transform .1s;

@@ -42,7 +42,7 @@
           <input class="item__checkbox" type="checkbox" ng-model="todo.done" ng-click="toggleDone()" />
           <span class="item__checkmark"></span>
         </label>
-        <span class="{{todo.done ? 'done' : ''}}" ng-if="todo.editing === false">{{ todo.text }}</span>
+        <span class="item__taskName {{todo.done ? 'done' : ''}}" ng-if="todo.editing === false">{{ todo.text }}</span>
         <form class="item__editTaskForm" ng-if="todo.editing === true" ng-submit="saveEdit(todo)">
           <input class="item__editTaskForm__editInput" id="editInput" type="text" ng-model="todo.newText" ng-init="setFocus()"/>
           <button class="item__editTaskForm__saveBtn" title="Save Changes"><i class="fas fa-save"></i></button>
