@@ -35,8 +35,22 @@ body {
   }
 }
 
-header {
+.header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-top: 2em;
+}
+
+.header svg {
+  -webkit-filter: drop-shadow(0 0 1px #000);
+          filter: drop-shadow(0 0 1px #000);
+  color: #bada55;
+  font-size: 1.5em;
+  margin-left: .5em;
 }
 
 main {
