@@ -128,7 +128,7 @@ h3 {
     background-color: #e6e6e6;
   }
 
-  button {
+  .item__cancelBtn, .item__editBtn, .item__removeBtn, .item__editTaskForm__saveBtn {
     border: none;
     background: none;
     font-size: 1.5em;
@@ -223,10 +223,10 @@ h3 {
   }
 }
 
-.item__removeBtn {
-  margin-left: 1em;
+.item .item__cancelBtn {
   color: hsl(0, 50%, 30%);
   transition: color .2s;
+  font-size: 2em;
 
   &:hover {
     color: hsl(0, 100%, 50%);
@@ -240,6 +240,16 @@ h3 {
 
   &:hover {
     color: hsl(155, 90%, 33%);
+  }
+}
+
+.item__removeBtn {
+  margin-left: 1em;
+  color: hsl(0, 50%, 30%);
+  transition: color .2s;
+
+  &:hover {
+    color: hsl(0, 100%, 50%);
   }
 }
 

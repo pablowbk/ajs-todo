@@ -151,7 +151,7 @@ h3 {
   background-color: #e6e6e6;
 }
 
-.item button {
+.item .item__cancelBtn, .item .item__editBtn, .item .item__removeBtn, .item .item__editTaskForm__saveBtn {
   border: none;
   background: none;
   font-size: 1.5em;
@@ -159,7 +159,7 @@ h3 {
   transition: all .2s;
 }
 
-.item button:hover {
+.item .item__cancelBtn:hover, .item .item__editBtn:hover, .item .item__removeBtn:hover, .item .item__editTaskForm__saveBtn:hover {
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
 }
@@ -260,14 +260,14 @@ h3 {
           transform: rotate(15deg) scale(1.1) translate(-50%, -25%);
 }
 
-.item__removeBtn {
-  margin-left: 1em;
+.item .item__cancelBtn {
   color: #732626;
   -webkit-transition: color .2s;
   transition: color .2s;
+  font-size: 2em;
 }
 
-.item__removeBtn:hover {
+.item .item__cancelBtn:hover {
   color: red;
 }
 
@@ -280,6 +280,17 @@ h3 {
 
 .item__editTaskForm__saveBtn:hover {
   color: #08a061;
+}
+
+.item__removeBtn {
+  margin-left: 1em;
+  color: #732626;
+  -webkit-transition: color .2s;
+  transition: color .2s;
+}
+
+.item__removeBtn:hover {
+  color: red;
 }
 
 .listModifiers {

@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
-  <link rel="shortcut icon" href="nextflix-logo.svg" type="image/x-icon">
+  <link rel="shortcut icon" href="nextflix-logo.png" type="image/x-icon">
   <link rel="manifest" href="manifest.json">
   
   <!-- Bootstrap CDN -->
@@ -18,46 +18,80 @@
   <script src="https://cdn.jsdelivr.net/angular.ng-notify/0.8.0/ng-notify.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/angular.ng-notify/0.8.0/ng-notify.min.css">
   <!-- FontAwesome CDN -->
-  <!-- <script defer src="https://use.fontawesome.com/releases/v5.12.0/js/all.js" integrity="sha384-S+e0w/GqyDFzOU88KBBRbedIB4IMF55OzWmROqS6nlDcXlEaV8PcFi4DHZYfDk4Y" crossorigin="anonymous"></script> -->
   <script src="https://kit.fontawesome.com/cd294b5c2b.js" crossorigin="anonymous"></script>
 
   <link rel="stylesheet" href="css/main.css">
 
-  <title>ToDo App with AJS</title>
+  <title>nextFlix</title>
 </head>
 
 <body ng-app="App">
+
   <header class="header">
     <h1>nextFlix</h1><i class="fas fa-play"></i>
   </header>
-
   <h3>Plan your movies-night ahead!</h3>
 
   <main ng-controller="TodoController">
+
+    <!-- Handle User Input / add items to list -->
     <form class="newTaskForm">
-      <input class="newTaskForm__input" type="text" ng-model="inputText" ng-required="required" placeholder="Type a movie title..." />
-      <button class="newTaskForm__addBtn" ng-click="addItem()" title="Add a new task"><i class="fas fa-plus"></i></button>
+      <input class="newTaskForm__input" type="text" 
+        ng-model="inputText" ng-required="required" 
+        placeholder="Type a movie title..." />
+      <button class="newTaskForm__addBtn" 
+        ng-click="addItem()" title="Add a new task">
+        <i class="fas fa-plus"></i>
+      </button>
     </form>
-    <ul class="todos-list">
+
+    <ul class="todos-list"> 
+      <!-- render list from $scope.todos array -->
       <li ng-repeat="todo in todos | orderBy:groupDone" class="item">
+
+        <!-- custom checkbox -->
         <label class="item__checkbox__container" ng-if="todo.editing === false">
-          <input class="item__checkbox" type="checkbox" ng-model="todo.done" ng-click="toggleDone()" />
+          <input class="item__checkbox" type="checkbox" ng-model="todo.done" ng-click="toggleDone()"/>
           <span class="item__checkmark"></span>
         </label>
-        <span class="item__taskName {{todo.done ? 'done' : ''}}" ng-if="todo.editing === false">{{ todo.text }}</span>
+        
+        <!-- render user input / list item -->
+        <span class="item__taskName {{todo.done ? 'done' : ''}}" 
+          ng-if="todo.editing === false">
+          {{ todo.text }}
+        </span>
+
+        <!-- conditional rendering to edit item's input -->
         <form class="item__editTaskForm" ng-if="todo.editing === true" ng-submit="saveEdit(todo)">
-          <input class="item__editTaskForm__editInput" id="editInput" type="text" ng-model="todo.newText" ng-init="setFocus()"/>
-          <button class="item__editTaskForm__saveBtn" title="Save Changes"><i class="fas fa-save"></i></button>
+          <input class="item__editTaskForm__editInput" id="editInput" type="text" 
+            ng-model="todo.newText" ng-init="setFocus()"/>
+          <button class="item__editTaskForm__saveBtn" title="Save Changes">
+            <i class="fas fa-save"></i>
+          </button>
         </form>
-        <button class="item__editBtn" ng-click="toggleEdit(todo)" title="Edit Title">
-          <i class="{{ todo.editing ? 'fas fa-times' : 'fas fa-pen' }}"></i>
+        
+        <!-- btn for toggling edit mode -->
+        <button class="item__editBtn" title="Edit Title" 
+          ng-click="toggleEdit(todo)" ng-hide="todo.editing === true">
+          <i class="fas fa-pen"></i>
         </button>
-        <button class="item__removeBtn" ng-click="deleteItem()" title="Remove Movie" ng-if="todo.editing === false"><i class="fas fa-trash"></i></button>
+        <button class="item__cancelBtn" title="Cancel Edit" 
+          ng-click="toggleEdit(todo)" ng-show="todo.editing === true">
+          <i class="fas fa-times"></i>
+        </button>
+
+        <!-- remove item btn -->
+        <button class="item__removeBtn" ng-click="deleteItem()" title="Remove Movie" 
+          ng-if="todo.editing === false">
+          <i class="fas fa-trash"></i>
+        </button>
       </li>
     </ul>
 
+    <!-- options to modify items list -->
     <div class="listModifiers">
       <div class="orderItems">
+        <!-- order function passed to ng-repeat's orderBy -->
         <button ng-click="orderByDone('done')" title="Send already watched to bottom of list"><i class="fas fa-layer-group"></i>Group Completed</button>
       </div>
   
@@ -68,8 +102,10 @@
     
         <button class="moreActions__deleteAllBtn" ng-click="deleteAll()" title="Clear list"><i class="fas fa-trash-alt"></i>All</button>
       </div>
+
     </div>
 
+    <!-- display list status info -->
     <div class="tasksStatus">
       <h3 ng-if="todos.length === 0">No movies added yet...</h3>
       <h3 ng-if="completed() !== todos.length">Movies watched: {{ completed() }} of {{ todos.length }}</h3>
