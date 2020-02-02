@@ -80,8 +80,13 @@ app.controller("TodoController", ['$scope', '$window', 'ngNotify', function ($sc
 
   $scope.deleteItem = function () {
     $scope.todos.splice(this.$index, 1);
-    if ($scope.completed() === $scope.todos.length) {
+    console.log($scope.todos.length)
+    $window.localStorage.setItem('itemsList', angular.toJson($scope.todos));
+    if ($scope.completed() === $scope.todos.length && $scope.todos.length > 0) {
       ngNotify.set('All movies watched!', 'success');
+    } else {
+      $window.localStorage.removeItem('itemsList');
+      ngNotify.set('List cleared!')
     }
   }
 
