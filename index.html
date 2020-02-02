@@ -57,7 +57,8 @@
         
         <!-- render user input / list item -->
         <span class="item__taskName {{todo.done ? 'done' : ''}}" 
-          ng-if="todo.editing === false">
+          ng-if="todo.editing === false"
+          ng-dblclick="toggleEdit(todo)">
           {{ todo.text }}
         </span>
 
