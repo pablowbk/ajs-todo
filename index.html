@@ -64,7 +64,7 @@
         <!-- conditional rendering to edit item's input -->
         <form class="item__editTaskForm" ng-if="todo.editing === true" ng-submit="saveEdit(todo)">
           <input class="item__editTaskForm__editInput" id="editInput" type="text" 
-            ng-model="todo.newText" ng-init="setFocus()" ng-blur="toggleEdit(todo)"/>
+            ng-model="todo.newText" ng-init="setFocus()" ng-blur="saveEdit(todo)"/>
           <button class="item__editTaskForm__saveBtn" title="Save Changes">
             <i class="fas fa-save"></i>
           </button>
